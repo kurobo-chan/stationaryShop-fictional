@@ -1,0 +1,788 @@
+@charset "UTF-8";
+:root {
+  /* Colors: */
+  --hero: #fff7f5;
+  --g-light: #cfcfcf;
+  --gray: #7d7d7d;
+  --white: #ffffff;
+  --s-light: #ffdd71;
+  --secondary: #ffab40;
+  --s-dark: #c77c02;
+  --black: #222222;
+  --p-light: #9fffe0;
+  --p-dark: #2bbd7e;
+  --primary: #69f0ae;
+  /* Font/text values */
+  --notoJP: "Noto Sans JP", sans-serif;
+  --allRound: all-round-gothic, sans-serif;
+  /* font size 200 400 500 600 700*/
+  --f1: 2.44rem;
+  --f2: 1.95rem;
+  --f3: 1.56rem;
+  --f4: 1.25rem;
+  --f5HalfUp: 1.125rem;
+  --f5: 1rem;
+  --f6HalfUp: 0.875rem;
+  --f6: 0.8rem;
+  --f7f6HalfUp: clamp(var(--f7), 1.5vw, var(--f6HalfUp));
+  --f7: 0.64rem;
+  --f8: 0.5rem;
+  --layoutSpaceHorizontal: 4vw;
+  --layoutSpaceVertical: 40px;
+  --layoutMinWidth: calc(100vw - var(--layoutSpaceHorizontal) * 2);
+  --layoutMaxWidth: 1088px;
+
+  --v-space: clamp(80px, 9vw, 120px);
+}
+/* grid */
+.partsGrid {
+  display: grid;
+  grid-template-columns: 1fr min(var(--layoutMinWidth), var(--layoutMaxWidth)) 1fr;
+}
+.partsGrid > * {
+  grid-column: 2;
+}
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sr-only {
+  clip: rect(0 0 0 0);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+body {
+  color: var(--black);
+  font-family: var(--notoJP);
+  font-size: var(--f5HalfUp);
+  line-height: 1.8;
+}
+/*++++++++++++++++++++ */
+/*ヘッダー */
+.header {
+  height: 112px;
+}
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 100;
+}
+.site {
+  min-width: 108px;
+  width: 28vw;
+  @media (min-width: 768px) {
+    max-width: 236px;
+  }
+  img {
+    width: 100%;
+  }
+}
+.contactBtn,
+.newsBtn,
+.navBtn {
+  font-family: var(--allRound);
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  font-size: var(--f7f6HalfUp);
+  padding: 0.5em 1em;
+  border-radius: 30px;
+}
+.contactBtn {
+  background: var(--p-dark);
+  color: var(--white);
+}
+.newsBtn {
+  background: var(--p-light);
+}
+.navBtn {
+  border: solid 1px var(--p-light);
+  grid-column: 2;
+  z-index: 1000;
+  transition: 0.5s;
+  display: grid;
+  gap: 5px;
+  padding: 1em 1.5em;
+  line-height: 1;
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+/*ナビケーションメニュー*/
+.nav-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  ul {
+    display: flex;
+    gap: 20px;
+  }
+  @media (min-width: 768px) {
+    font-size: clamp(var(--f7), 1.3vw, var(--f5HalfUp));
+  }
+  @media (max-width: 767px) {
+    position: fixed;
+    inset: 0;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s;
+    z-index: 100;
+    background-image: url(/images/backNote.svg);
+    background-color: var(--white);
+    background-repeat: no-repeat;
+    background-size: cover;
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      height: 100%;
+      width: 76%;
+      margin: 112px var(--layoutSpaceHorizontal) 0 auto;
+      border-top: 1px solid var(--g-light);
+      box-sizing: border-box;
+    }
+    li {
+      border-bottom: 1px solid var(--g-light);
+      line-height: 60px;
+    }
+  }
+}
+.open {
+  .navBtn {
+    background-color: var(--gray);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      background-color: currentColor;
+    }
+  }
+  .nav {
+    transform: translate(0);
+  }
+  body {
+    position: fixed;
+    overflow: hidden;
+  }
+}
+/*ヒーロー */
+.hero {
+  background-color: var(--hero);
+  height: 100vh;
+  margin-top: -112px;
+  position: relative;
+
+  h1 {
+    font-family: var(--allRound);
+    font-size: clamp(48px, 8.8vw, 80px);
+    line-height: 1.3;
+    font-weight: 600;
+    min-height: 0;
+    margin-bottom: calc(var(--layoutSpaceVertical) / 2);
+    @media (min-width: 768px) {
+      margin-bottom: var(--layoutSpaceVertical);
+    }
+  }
+  p {
+    font-size: clamp(var(--f5), 2.7vw, var(--f3));
+    color: var(--gray);
+    margin-bottom: calc(var(--layoutSpaceVertical) / 2);
+    @media (min-width: 768px) {
+      margin-bottom: var(--layoutSpaceVertical);
+    }
+  }
+}
+.heroFig {
+  height: inherit;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right 150px;
+  }
+}
+.hero-container {
+  top: 50%;
+  transform: translate(0, -50%);
+  position: absolute;
+  margin: 0 var(--layoutSpaceHorizontal);
+  z-index: 1;
+  @media (min-width: 768px) {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+}
+/*アニメーション風船*/
+.animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  overflow: hidden;
+
+  span {
+    display: block;
+    position: absolute;
+    transition: 0.3s ease-out;
+    z-index: 1000;
+  }
+  .balloon {
+    width: 15vmin;
+    bottom: -100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  .balloon01 {
+    width: 12vmin;
+    left: 50%;
+    animation: balloon01 3s ease-out 0s 1 normal forwards;
+  }
+  .balloon02 {
+    width: 16vmin;
+    left: 5%;
+    animation: balloon02 2.5s ease-out 0s 1 normal forwards;
+  }
+  .balloon03 {
+    width: 14vmin;
+    left: 90%;
+    animation: balloon03 2.5s ease-out 0.5s 1 normal forwards;
+  }
+  .balloon04 {
+    width: 12vmin;
+    left: 40%;
+    animation: balloon04 2.5s ease-out 1s 1 normal forwards;
+  }
+  .balloon05 {
+    width: 14vmin;
+    left: 30%;
+    animation: balloon05 3s ease-out 0.5s 1 normal forwards;
+  }
+  .balloon06 {
+    width: 12vmin;
+    left: 12%;
+    animation: balloon06 2.5s ease-out 0s 1 normal forwards;
+  }
+  .balloon07 {
+    width: 15vmin;
+    left: 50%;
+    animation: balloon07 2.5s ease-out 0.5s 1 normal forwards;
+  }
+  .balloon08 {
+    width: 8vmin;
+    left: 53%;
+    animation: balloon08 2s ease-out 1.5s 1 normal forwards;
+  }
+  .balloon09 {
+    width: 12vmin;
+    left: 80%;
+    bottom: 10%;
+    animation: balloon09 2.5s ease-out 0s 1 normal forwards;
+  }
+  .balloon10 {
+    width: 8vmin;
+    left: 70%;
+    animation: balloon10 2.5s ease-out 0.8s 1 normal forwards;
+  }
+  .balloon11 {
+    width: 22vmin;
+    left: 20%;
+    animation: balloon11 2s ease-out 1s 1 normal forwards;
+  }
+  .balloon12 {
+    width: 14vmin;
+    left: 0%;
+    animation: balloon12 3s ease-out 0s 1 normal forwards;
+  }
+  .balloon13 {
+    width: 10vmin;
+    left: 25%;
+    animation: balloon13 2.5s ease-out 1s 1 normal forwards;
+  }
+  .balloon14 {
+    width: 18vmin;
+    left: 40%;
+    animation: balloon14 3s ease-out 1s 1 normal forwards;
+  }
+  .balloon15 {
+    width: 8vmin;
+    left: 25%;
+    animation: balloon15 2.5s ease-out 0s 1 normal forwards;
+  }
+  .balloon16 {
+    width: 16vmin;
+    left: 40%;
+    animation: balloon16 2.5s ease-out 0s 1 normal forwards;
+  }
+  .balloon17 {
+    width: 16vmin;
+    left: 80%;
+    animation: balloon17 2.5s ease-out 1s 1 normal forwards;
+  }
+  .school {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 2%;
+    width: 54vmin;
+    height: auto;
+    transform: rotate(-2deg);
+    transform-origin: 0 center;
+    animation: school 2s ease-in-out 1.5s 1 normal forwards,
+      school2 3s ease-in-out 3.5s infinite normal forwards;
+    transition: 0.3s ease-out;
+    @media (min-width: 768px) {
+      right: 6%;
+      width: 20vmin;
+    }
+    a {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      width: 80%;
+      height: 87%;
+      margin: auto;
+      transform: translateY(-50%);
+      z-index: 100;
+    }
+  }
+}
+@keyframes balloon01 {
+  0% {
+    left: 50%;
+    bottom: -100%;
+  }
+  100% {
+    left: 55%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon02 {
+  0% {
+    left: 15%;
+    bottom: -100%;
+  }
+  100% {
+    left: 5%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon03 {
+  0% {
+    left: 90%;
+    bottom: -100%;
+  }
+  100% {
+    left: 70%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon04 {
+  0% {
+    left: 40%;
+    bottom: -100%;
+  }
+  100% {
+    left: 30%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon05 {
+  0% {
+    left: 30%;
+    bottom: -100%;
+  }
+  100% {
+    left: 30%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon06 {
+  0% {
+    left: 50%;
+    bottom: -100%;
+  }
+  100% {
+    left: 40%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon07 {
+  0% {
+    left: 50%;
+    bottom: -100%;
+  }
+  100% {
+    left: 60%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon08 {
+  0% {
+    left: 53%;
+    bottom: -100%;
+  }
+  100% {
+    left: 10%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon09 {
+  0% {
+    left: 80%;
+    bottom: -100%;
+  }
+  100% {
+    left: 80%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon10 {
+  0% {
+    left: 70%;
+    bottom: -100%;
+  }
+  100% {
+    left: 60%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon11 {
+  0% {
+    left: 20%;
+    bottom: -100%;
+  }
+  100% {
+    left: 60%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon12 {
+  0% {
+    left: 0%;
+    bottom: -100%;
+  }
+  100% {
+    left: 0%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon13 {
+  0% {
+    left: 25%;
+    bottom: -100%;
+  }
+  100% {
+    left: 0%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon14 {
+  0% {
+    left: 40%;
+    bottom: -100%;
+  }
+  100% {
+    left: 50%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon15 {
+  0% {
+    left: 25%;
+    bottom: -100%;
+  }
+  100% {
+    left: 0%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon16 {
+  0% {
+    left: 40%;
+    bottom: -100%;
+  }
+  100% {
+    left: 50%;
+    bottom: 100%;
+  }
+}
+@keyframes balloon17 {
+  0% {
+    left: 80%;
+    bottom: -100%;
+  }
+  100% {
+    left: 80%;
+    bottom: 100%;
+  }
+}
+@keyframes school {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 70%;
+  }
+}
+@keyframes school2 {
+  0% {
+    top: 70%;
+    transform: rotate(-2deg);
+  }
+  50% {
+    top: 71.5%;
+    transform: rotate(2deg);
+  }
+  100% {
+    top: 70%;
+    transform: rotate(-2deg);
+  }
+}
+/*ボタン */
+.btn {
+  display: inline-block;
+  font-size: var(--f5HalfUp);
+  padding: 10px;
+  background-color: var(--p-dark);
+  border-radius: 4px;
+  color: var(--white);
+  text-align: center;
+  text-shadow: 0 0 6px #00000052;
+}
+a:hover {
+  filter: brightness(90%) contrast(120%);
+}
+/*線で装飾*/
+.heading-decoration {
+  font-size: clamp(var(--f2), 4.3vw, var(--f1));
+  min-height: 0;
+  font-weight: 400;
+}
+.heading-decoration::after {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 0px;
+  border-top: 1px solid var(--primary);
+  box-sizing: border-box;
+  margin-top: 0.6em;
+}
+
+.heading-decoration + p {
+  margin-top: 1em;
+  margin-bottom: 2em;
+  font-family: var(--allRound);
+  color: var(--gray);
+  font-size: var(--f5HalfUp);
+}
+/*画像とテキスト*/
+.imgText {
+  padding: var(--v-space) 0;
+}
+.imgText + .imgText {
+  padding-top: 0;
+  .text::before {
+    content: "\f249";
+    left: var(--layoutSpaceHorizontal);
+    transform: translateY(-50%) rotate(-15deg);
+  }
+}
+.imgText-container {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(
+    var(--layoutSpaceVertical),
+    6vw,
+    calc(var(--layoutSpaceVertical) * 2)
+  );
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+.imgText-container.reverse {
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
+}
+.imgText-container > .text {
+  flex: 1;
+  min-width: 17em;
+}
+.imgText-container > .img {
+  flex: 2;
+}
+.text {
+  position: relative;
+}
+.text::before {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  content: "\f305";
+  font-weight: 900;
+  font-size: clamp(200px, 60vw, 15vw);
+  color: var(--s-light);
+  opacity: 0.3;
+  z-index: -1;
+  top: 50%;
+  right: var(--layoutSpaceHorizontal);
+  transform: translateY(-50%);
+}
+/*記事一覧*/
+.posts {
+  padding: var(--v-space) 0;
+  background-image: url(/images/backNote.svg);
+  background-color: var(--g-light);
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: cover;
+}
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 20px;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/*横幅と左右の余白*/
+.w-container {
+  position: relative;
+}
+/*パーツの見出し*/
+.heading {
+  font-family: var(--allRound);
+  font-size: var(--f1);
+  font-weight: 200;
+  line-height: initial;
+  position: absolute;
+  top: calc((var(--v-space) + 0.6em) * -1);
+  min-height: 0;
+  span {
+    display: block;
+    font-size: var(--f5HalfUp);
+  }
+}
+.post {
+  img {
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    width: 100%;
+    @supports not (aspect-ratio: 3/2) {
+      height: 180px;
+    }
+  }
+  a {
+    display: block;
+  }
+  h3 {
+    margin: 1em 0 0.5em;
+    font-size: clamp(var(--f6), 2.6vw, var(--f4));
+  }
+  p {
+    max-width: 20em;
+    font-size: clamp(var(--f7), 1.8vw, var(--f6HalfUp));
+  }
+}
+/*フッター*/
+.footer {
+  padding: 80px 0;
+  color: var(--gray);
+  font-size: var(--f5);
+}
+.footer-container {
+  display: grid;
+  gap: var(--layoutSpaceVertical);
+  justify-items: center;
+  @media (min-width: 768px) {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    gap: calc(var(--layoutSpaceVertical) / 2);
+    > .footer-sns {
+      grid-column: 2;
+      grid-row: 1/4;
+      justify-self: end;
+      align-self: center;
+    }
+    > .footer-site {
+      margin-bottom: calc(var(--layoutSpaceVertical) / 2);
+    }
+    > *:not(.footer-sns) {
+      justify-self: start;
+    }
+  }
+}
+.footer-site {
+  img {
+    width: 108px;
+  }
+}
+.footer-sns {
+  display: flex;
+  gap: 30px;
+  font-size: var(--f2);
+  a {
+    display: grid;
+    place-items: center;
+    width: 60px;
+    aspect-ratio: 1/1;
+    background: var(--g-light);
+    color: var(--white);
+    clip-path: circle(50%);
+    @supports not (aspect-ratio: 1/1) {
+      height: 60px;
+    }
+  }
+}
+/*フッター：テキストメニュー*/
+.footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(var(--layoutSpaceVertical) / 2);
+}
+/*フッター：コピーライト*/
+.footer-copy {
+  font-family: var(--allRound);
+  font-weight: 500;
+}

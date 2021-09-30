@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://use.typekit.net/uif7agc.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dist/hamburgers.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header partsGrid">
+      <div class="header-container">
+        <div class="site">
+          <a href="index.html">
+            <img src="/images/logo.svg" alt="Boards" />
+          </a>
+        </div>
+        <div class="nav-container">
+          <button class="contactBtn"><span>contact</span></button>
+          <button class="newsBtn"><span>news</span></button>
+          <button
+            class="navBtn hamburger hamburger--squeeze"
+            type="button"
+            onclick="navFunc()"
+          >
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+            <span>menu</span>
+          </button>
+          <nav class="nav">
+            <ul>
+              <li><a href="#">ホーム</a></li>
+              <li><a href="#">Boardsとは</a></li>
+              <li><a href="#">セール情報</a></li>
+              <li class="news"><a href="#">ニュース</a></li>
+              <li class="contact"><a href="#">お問い合わせ</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <section class="hero">
+      <figure class="heroFig">
+        <img src="/images/hero.svg" alt="" />
+      </figure>
+      <div class="hero-container">
+        <h1>
+          Stationery <br />
+          Services
+        </h1>
+        <p>便利な道具とサービスをお届けします</p>
+        <a href="#" class="btn">無料で始める</a>
+      </div>
+      <div class="animation">
+        <span class="balloon balloon01"
+          ><img src="/images/buleA.svg" alt=""
+        /></span>
+        <span class="balloon balloon02"
+          ><img src="/images/buleB.svg" alt=""
+        /></span>
+        <span class="balloon balloon03"
+          ><img src="/images/buleC.svg" alt=""
+        /></span>
+        <span class="balloon balloon04"
+          ><img src="/images/redA.svg" alt=""
+        /></span>
+        <span class="balloon balloon05"
+          ><img src="/images/redB.svg" alt=""
+        /></span>
+        <span class="balloon balloon06"
+          ><img src="/images/darkBuleA.svg" alt=""
+        /></span>
+        <span class="balloon balloon07"
+          ><img src="/images/darkBuleB.svg" alt=""
+        /></span>
+        <span class="balloon balloon08"
+          ><img src="/images/buleA.svg" alt=""
+        /></span>
+        <span class="balloon balloon09"
+          ><img src="/images/buleB.svg" alt=""
+        /></span>
+        <span class="balloon balloon10"
+          ><img src="/images/buleC.svg" alt=""
+        /></span>
+        <span class="balloon balloon11"
+          ><img src="/images/redA.svg" alt=""
+        /></span>
+        <span class="balloon balloon12"
+          ><img src="/images/redB.svg" alt=""
+        /></span>
+        <span class="balloon balloon13"
+          ><img src="/images/buleA.svg" alt=""
+        /></span>
+        <span class="balloon balloon14"
+          ><img src="/images/darkBuleA.svg" alt=""
+        /></span>
+        <span class="balloon balloon15"
+          ><img src="/images/buleB.svg" alt=""
+        /></span>
+        <span class="balloon balloon16"
+          ><img src="/images/buleC.svg" alt=""
+        /></span>
+        <span class="balloon balloon17"
+          ><img src="/images/darkBuleB.svg" alt=""
+        /></span>
+        <span class="school">
+          <img src="/images/school.svg" alt="" />
+          <a href="#"></a>
+        </span>
+      </div>
+    </section>
+    <section class="imgText partsGrid">
+      <div class="imgText-container">
+        <div class="text">
+          <h2 class="heading-decoration">日常のツールたち</h2>
+          <p>Convenient</p>
+          <p>
+            どこにでもある、誰でも使ったことがある、普段は存在を意識しないけど困るツールたち、日常をちょっと楽しくしてくれます。
+          </p>
+        </div>
+        <figure class="img">
+          <img src="/images/Convenient.jpeg" alt="" />
+        </figure>
+      </div>
+    </section>
+    <section class="imgText partsGrid">
+      <div class="imgText-container reverse">
+        <div class="text">
+          <h2 class="heading-decoration">効率化の手助け</h2>
+          <p>Helpful</p>
+          <p>
+            さまざまな作業を効率よく進めるためには、目的に応じて最適な道具を使うことが大切です。そんな道具たちが揃っています。
+          </p>
+        </div>
+        <figure class="img">
+          <img src="/images/Helpful.jpeg" alt="" />
+        </figure>
+      </div>
+    </section>
+    <section class="posts">
+      <div class="w-container partsGrid">
+        <h2 class="heading">News Releases<span>最新情報</span></h2>
+        <div class="posts-container">
+          <article class="post">
+            <a href="#">
+              <figure>
+                <img src="/images/sequin.jpeg" alt="" />
+              </figure>
+              <h3>スパンコール</h3>
+              <p>
+                キラキラと光を反射する装飾素材です。いつもの道具にアクセントをつけます。
+              </p>
+            </a>
+          </article>
+          <article class="post">
+            <a href="#">
+              <figure>
+                <img src="/images/light.jpeg" alt="" />
+              </figure>
+              <h3>卓上ランタン</h3>
+              <p>手元に灯りが欲しい時に、便利でかわいい卓上ランタンです。</p>
+            </a>
+          </article>
+          <article class="post">
+            <a href="#">
+              <figure>
+                <img src="/images/booklet.jpeg" alt="" />
+              </figure>
+              <h3>冊子印刷</h3>
+              <p>スタンダードプランにも手軽な冊子印刷が登場しました。</p>
+            </a>
+          </article>
+          <article class="post">
+            <a href="#">
+              <figure>
+                <img src="/images/magnet.jpeg" alt="" />
+              </figure>
+              <h3>マグネット</h3>
+              <p>
+                メモやアイデアを張り出しておくなら、かわいいマグネットがおすすめです。
+              </p>
+            </a>
+          </article>
+          <article class="post">
+            <a href="#">
+              <figure>
+                <img src="/images/Business.jpeg" alt="" />
+              </figure>
+              <h3>ビジネスノート</h3>
+              <p>
+                書き心地や開きやすさにこだわった、ビジネス用のノートたちを紹介します。
+              </p>
+            </a>
+          </article>
+          <article class="post">
+            <a href="#">
+              <figure>
+                <img src="/images/ballpoint.jpeg" alt="" />
+              </figure>
+              <h3>ボールペン</h3>
+              <p>
+                スタイリッシュなボールペンで仕事環境の雰囲気をかえてみました。
+              </p>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <footer class="footer partsGrid">
+      <div class="footer-container">
+        <div class="footer-site">
+          <img src="/images/logo.svg" alt="" />
+        </div>
+        <ul class="footer-sns">
+          <li>
+            <a href="#"
+              ><i class="fab fa-twitter"></i
+              ><span class="sr-only">Twitter</span></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fab fa-facebook-f"></i
+              ><span class="sr-only">Facebook</span></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fab fa-instagram"></i
+              ><span class="sr-only">Instagram</span></a
+            >
+          </li>
+        </ul>
+        <ul class="footer-menu">
+          <li><a href="#">会社概要</a></li>
+          <li><a href="#">特定商取引法</a></li>
+          <li><a href="#">個人情報の取り扱い</a></li>
+          <li><a href="#">サービス案内</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+        <div class="footer-copy">© boards production.</div>
+      </div>
+    </footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
